@@ -11,13 +11,26 @@ namespace EscuelasWebApi
     {
         public static void Register(HttpConfiguration config)
         {
-            config.MapHttpAttributeRoutes();
+            config.SuppressDefaultHostAuthentication();
+          //config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
+            config.MapHttpAttributeRoutes();
             config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+               name: "ControllerOnly",
+               routeTemplate: "{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
+);
+            config.Routes.MapHttpRoute(
+                name: "Default",
+                //routeTemplate: "api/{controller}/{id}",
+                routeTemplate: "{controller}/{action}"
+
             );
+            // Web API routes
+
+
+
+
 
             var jsonFormatter = config.Formatters.OfType<JsonMediaTypeFormatter>().First();
             jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
