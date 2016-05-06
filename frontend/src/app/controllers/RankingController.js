@@ -19,7 +19,7 @@
                     "value" : 10
                     } , 
                     { 
-                    "label" : "Manuel Belgrano" , 
+                    "label" : "Belgrano" , 
                     "value" : 5
                     } , 
                     { 

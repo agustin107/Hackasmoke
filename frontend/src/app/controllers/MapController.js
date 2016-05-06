@@ -18,23 +18,23 @@
                     belgranoMarker: {
                         lat: -27.46933539,
                         lng: -58.83093188,
-                        message: "Manuel Belgrano",
+                        message: "<img src='assets/images/badgedino.png' width='200px' height='200px'><h5> Escuela Belgrano</h5>",
                         focus: true
                     },
                     sarmientoMarker: {
                         lat: -27.46353482,
                         lng: -58.84025596,
-                        message: "Sarmiento"
+                        message: "<img src='assets/images/badgePiano.png' width='200px' height='200px'><h5>Escuela Sarmiento</h5>"
                     },
                     normalMarker: {
                         lat: -27.45996439,
                         lng: -58.8227534,
-                        message: "Normal"
+                        message: "<img src='assets/images/badgeTaj.png' width='200px' height='200px'><h5>Escuela Normal</h5>"
                     },
                     nacionalMarker: {
                         lat: -27.46242325,
                         lng: -58.84162854,
-                        message: "Nacional"
+                        message: "<img src='assets/images/badgeNeil.png' width='200px' height='200px'><h5>Escuela Nacional</h5>"
                     }
                 },
                 defaults: {
