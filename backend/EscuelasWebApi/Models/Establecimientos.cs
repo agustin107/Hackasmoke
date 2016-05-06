@@ -14,6 +14,12 @@ namespace EscuelasWebApi.Models
     
     public partial class Establecimientos
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Establecimientos()
+        {
+            this.Puntajes = new HashSet<Puntajes>();
+        }
+    
         public string CueAnexo { get; set; }
         public string Nombre { get; set; }
         public string Regimen { get; set; }
@@ -22,5 +28,8 @@ namespace EscuelasWebApi.Models
         public string Localidad { get; set; }
         public string Departamento { get; set; }
         public string Jurisdiccion { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Puntajes> Puntajes { get; set; }
     }
 }
