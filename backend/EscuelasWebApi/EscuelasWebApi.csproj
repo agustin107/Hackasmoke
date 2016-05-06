@@ -143,15 +143,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Models\EscuelasData.Context.tt">
+    <Content Include="Models\EscuelasModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EscuelasData.edmx</DependentUpon>
-      <LastGenOutput>EscuelasData.Context.cs</LastGenOutput>
+      <DependentUpon>EscuelasModel.edmx</DependentUpon>
+      <LastGenOutput>EscuelasModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\EscuelasData.tt">
+    <Content Include="Models\EscuelasModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EscuelasData.edmx</DependentUpon>
-      <LastGenOutput>EscuelasData.cs</LastGenOutput>
+      <DependentUpon>EscuelasModel.edmx</DependentUpon>
+      <LastGenOutput>EscuelasModel.cs</LastGenOutput>
     </Content>
     <Content Include="Web.config" />
   </ItemGroup>
@@ -159,40 +159,49 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\SchoolController.cs" />
+    <Compile Include="Models\Alumnos.cs">
+      <DependentUpon>EscuelasModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\AuthContext.cs" />
     <Compile Include="Models\AuthRepository.cs" />
+    <Compile Include="Models\CursoDivisionPorEstablecimiento.cs">
+      <DependentUpon>EscuelasModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CustomUser.cs" />
-    <Compile Include="Models\EscuelasData.Context.cs">
+    <Compile Include="Models\EscuelasModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EscuelasData.Context.tt</DependentUpon>
+      <DependentUpon>EscuelasModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\EscuelasData.cs">
+    <Compile Include="Models\EscuelasModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EscuelasData.tt</DependentUpon>
+      <DependentUpon>EscuelasModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\EscuelasData.Designer.cs">
+    <Compile Include="Models\EscuelasModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EscuelasData.edmx</DependentUpon>
+      <DependentUpon>EscuelasModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Establecimientos.cs">
-      <DependentUpon>EscuelasData.tt</DependentUpon>
+      <DependentUpon>EscuelasModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityExtension.cs" />
+    <Compile Include="Models\Puntajes.cs">
+      <DependentUpon>EscuelasModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StartUp.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <EntityDeploy Include="Models\EscuelasData.edmx">
+    <EntityDeploy Include="Models\EscuelasModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>EscuelasData.Designer.cs</LastGenOutput>
+      <LastGenOutput>EscuelasModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\EscuelasData.edmx.diagram">
-      <DependentUpon>EscuelasData.edmx</DependentUpon>
+    <Content Include="Models\EscuelasModel.edmx.diagram">
+      <DependentUpon>EscuelasModel.edmx</DependentUpon>
     </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
