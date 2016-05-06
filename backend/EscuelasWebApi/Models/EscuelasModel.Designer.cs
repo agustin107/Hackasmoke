@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Sergio\Desktop\hacka\Hackasmoke\backend\EscuelasWebApi\Models\EscuelasData.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Sergio\Desktop\hacka\Hackasmoke\backend\EscuelasWebApi\Models\EscuelasModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

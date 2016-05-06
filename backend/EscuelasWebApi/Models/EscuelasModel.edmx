@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EscuelasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Alumnos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Cue" Type="nvarchar(max)" />
+          <Property Name="Anexo" Type="nvarchar(max)" />
+          <Property Name="Cue-Anexo" Type="nvarchar" MaxLength="100" />
+          <Property Name="CursoDivisionId" Type="nvarchar" MaxLength="100" />
+          <Property Name="Curso" Type="nvarchar(max)" />
+          <Property Name="Division" Type="nvarchar(max)" />
+          <Property Name="Sexo" Type="nvarchar(max)" />
+          <Property Name="FechaNac" Type="nvarchar(max)" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CursoDivisionPorEstablecimiento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Cue" Type="nvarchar" MaxLength="50" />
+          <Property Name="Anexo" Type="nvarchar(max)" />
+          <Property Name="Cue-Anexo" Type="nvarchar(max)" />
+          <Property Name="CursoDivisionId" Type="nvarchar(max)" />
+          <Property Name="Curso" Type="nvarchar(max)" />
+          <Property Name="Division" Type="nvarchar(max)" />
+          <Property Name="NivelEnseñanza" Type="nvarchar(max)" />
+          <Property Name="Ciclo" Type="nvarchar(max)" />
+          <Property Name="Orientacion" Type="nvarchar(max)" />
+          <Property Name="Modalidad" Type="nvarchar(max)" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Establecimientos">
+          <Key>
+            <PropertyRef Name="CueAnexo" />
+          </Key>
+          <Property Name="CueAnexo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar(max)" />
+          <Property Name="Regimen" Type="nvarchar(max)" />
+          <Property Name="Latitud" Type="nvarchar(max)" />
+          <Property Name="Longitud" Type="nvarchar(max)" />
+          <Property Name="Localidad" Type="nvarchar(max)" />
+          <Property Name="Departamento" Type="nvarchar(max)" />
+          <Property Name="Jurisdiccion" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Puntajes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date" Type="date" />
+          <Property Name="cue" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="points" Type="int" />
+        </EntityType>
+        <Association Name="FK_Puntajes_Establecimientos">
+          <End Role="Establecimientos" Type="Self.Establecimientos" Multiplicity="1" />
+          <End Role="Puntajes" Type="Self.Puntajes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Establecimientos">
+              <PropertyRef Name="CueAnexo" />
+            </Principal>
+            <Dependent Role="Puntajes">
+              <PropertyRef Name="cue" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EscuelasModelStoreContainer">
+          <EntitySet Name="Alumnos" EntityType="Self.Alumnos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CursoDivisionPorEstablecimiento" EntityType="Self.CursoDivisionPorEstablecimiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Establecimientos" EntityType="Self.Establecimientos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Puntajes" EntityType="Self.Puntajes" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Puntajes_Establecimientos" Association="Self.FK_Puntajes_Establecimientos">
+            <End Role="Establecimientos" EntitySet="Establecimientos" />
+            <End Role="Puntajes" EntitySet="Puntajes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EscuelasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Alumnos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Cue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Anexo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Cue_Anexo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CursoDivisionId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Curso" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Division" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sexo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FechaNac" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="CursoDivisionPorEstablecimiento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Cue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Anexo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Cue_Anexo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CursoDivisionId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Curso" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Division" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NivelEnseñanza" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Ciclo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Orientacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Modalidad" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Establecimientos">
+          <Key>
+            <PropertyRef Name="CueAnexo" />
+          </Key>
+          <Property Name="CueAnexo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Regimen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Latitud" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Longitud" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Localidad" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Departamento" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Jurisdiccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Puntajes" Relationship="Self.FK_Puntajes_Establecimientos" FromRole="Establecimientos" ToRole="Puntajes" />
+        </EntityType>
+        <EntityType Name="Puntajes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="cue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="points" Type="Int32" />
+          <NavigationProperty Name="Establecimientos" Relationship="Self.FK_Puntajes_Establecimientos" FromRole="Puntajes" ToRole="Establecimientos" />
+        </EntityType>
+        <Association Name="FK_Puntajes_Establecimientos">
+          <End Role="Establecimientos" Type="Self.Establecimientos" Multiplicity="1" />
+          <End Role="Puntajes" Type="Self.Puntajes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Establecimientos">
+              <PropertyRef Name="CueAnexo" />
+            </Principal>
+            <Dependent Role="Puntajes">
+              <PropertyRef Name="cue" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EscuelasEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Alumnos" EntityType="Self.Alumnos" />
+          <EntitySet Name="CursoDivisionPorEstablecimiento" EntityType="Self.CursoDivisionPorEstablecimiento" />
+          <EntitySet Name="Establecimientos" EntityType="Self.Establecimientos" />
+          <EntitySet Name="Puntajes" EntityType="Self.Puntajes" />
+          <AssociationSet Name="FK_Puntajes_Establecimientos" Association="Self.FK_Puntajes_Establecimientos">
+            <End Role="Establecimientos" EntitySet="Establecimientos" />
+            <End Role="Puntajes" EntitySet="Puntajes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EscuelasModelStoreContainer" CdmEntityContainer="EscuelasEntities2">
+          <EntitySetMapping Name="Alumnos">
+            <EntityTypeMapping TypeName="EscuelasModel.Alumnos">
+              <MappingFragment StoreEntitySet="Alumnos">
+                <ScalarProperty Name="Cue" ColumnName="Cue" />
+                <ScalarProperty Name="Anexo" ColumnName="Anexo" />
+                <ScalarProperty Name="Cue_Anexo" ColumnName="Cue-Anexo" />
+                <ScalarProperty Name="CursoDivisionId" ColumnName="CursoDivisionId" />
+                <ScalarProperty Name="Curso" ColumnName="Curso" />
+                <ScalarProperty Name="Division" ColumnName="Division" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="FechaNac" ColumnName="FechaNac" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CursoDivisionPorEstablecimiento">
+            <EntityTypeMapping TypeName="EscuelasModel.CursoDivisionPorEstablecimiento">
+              <MappingFragment StoreEntitySet="CursoDivisionPorEstablecimiento">
+                <ScalarProperty Name="Cue" ColumnName="Cue" />
+                <ScalarProperty Name="Anexo" ColumnName="Anexo" />
+                <ScalarProperty Name="Cue_Anexo" ColumnName="Cue-Anexo" />
+                <ScalarProperty Name="CursoDivisionId" ColumnName="CursoDivisionId" />
+                <ScalarProperty Name="Curso" ColumnName="Curso" />
+                <ScalarProperty Name="Division" ColumnName="Division" />
+                <ScalarProperty Name="NivelEnseñanza" ColumnName="NivelEnseñanza" />
+                <ScalarProperty Name="Ciclo" ColumnName="Ciclo" />
+                <ScalarProperty Name="Orientacion" ColumnName="Orientacion" />
+                <ScalarProperty Name="Modalidad" ColumnName="Modalidad" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Establecimientos">
+            <EntityTypeMapping TypeName="EscuelasModel.Establecimientos">
+              <MappingFragment StoreEntitySet="Establecimientos">
+                <ScalarProperty Name="CueAnexo" ColumnName="CueAnexo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Regimen" ColumnName="Regimen" />
+                <ScalarProperty Name="Latitud" ColumnName="Latitud" />
+                <ScalarProperty Name="Longitud" ColumnName="Longitud" />
+                <ScalarProperty Name="Localidad" ColumnName="Localidad" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Jurisdiccion" ColumnName="Jurisdiccion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Puntajes">
+            <EntityTypeMapping TypeName="EscuelasModel.Puntajes">
+              <MappingFragment StoreEntitySet="Puntajes">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="cue" ColumnName="cue" />
+                <ScalarProperty Name="points" ColumnName="points" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

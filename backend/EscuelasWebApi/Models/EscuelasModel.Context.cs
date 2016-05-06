@@ -13,10 +13,10 @@ namespace EscuelasWebApi.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class EscuelasEntities1 : DbContext
+    public partial class EscuelasEntities2 : DbContext
     {
-        public EscuelasEntities1()
-            : base("name=EscuelasEntities1")
+        public EscuelasEntities2()
+            : base("name=EscuelasEntities2")
         {
         }
     
@@ -25,6 +25,9 @@ namespace EscuelasWebApi.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Alumnos> Alumnos { get; set; }
+        public virtual DbSet<CursoDivisionPorEstablecimiento> CursoDivisionPorEstablecimiento { get; set; }
         public virtual DbSet<Establecimientos> Establecimientos { get; set; }
+        public virtual DbSet<Puntajes> Puntajes { get; set; }
     }
 }
